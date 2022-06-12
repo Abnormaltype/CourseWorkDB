@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -10,7 +11,7 @@ from .forms import (
     ProjectSearchForm,
     MainForm,
 )
-from .models import Project, Bonus, Main, Wage
+from .models import Project, Bonus, Main, Wage, PersonBonusProject
 
 
 class MainListView(generic.ListView):
@@ -41,7 +42,7 @@ class MainDeleteView(generic.DeleteView):
     model = Main
     fields = "__all__"
     template_name = "salary/main_confirm_delete.html"
-    success_url = reverse_lazy("salary:main-delete")
+    success_url = reverse_lazy("salary:main-list")
 
 
 class ProjectListView(generic.ListView):
@@ -85,7 +86,7 @@ class ProjectDeleteView(generic.DeleteView):
     model = Project
     fields = "__all__"
     template_name = "salary/project_confirm_delete.html"
-    success_url = reverse_lazy("salary:project-delete")
+    success_url = reverse_lazy("salary:project-list")
 
 
 class ProjectDetailView(generic.DetailView):
@@ -137,7 +138,7 @@ class WageDeleteView(generic.DeleteView):
     model = Wage
     fields = "__all__"
     template_name = "salary/wage_confirm_delete.html"
-    success_url = reverse_lazy("salary:wage-delete")
+    success_url = reverse_lazy("salary:wage-list")
 
 
 class WageDetailView(generic.DetailView):
@@ -187,7 +188,7 @@ class BonusDeleteView(generic.DeleteView):
     model = Bonus
     fields = "__all__"
     template_name = "salary/bonus_confirm_delete.html"
-    success_url = reverse_lazy("salary:bonus-delete")
+    success_url = reverse_lazy("salary:bonus-list")
 
 
 class BonusDetailView(generic.DetailView):

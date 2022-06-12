@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models import Sum
 from django.urls import reverse
 
 
@@ -46,7 +47,7 @@ class Bonus(models.Model):
 class PersonBonusProject(models.Model):
     person = models.ForeignKey(to=Person, on_delete=models.CASCADE)
     project = models.ForeignKey(to=Project, on_delete=models.CASCADE)
-    bonus = models.ForeignKey(to=Bonus, on_delete=models.CASCADE, null=True, blank=True)
+    bonus = models.ManyToManyField(to=Bonus, related_name="bonus")
 
     def __str__(self):
         return f"{self.person}"
@@ -85,11 +86,19 @@ class Main(models.Model):
 
     @property
     def base_salary(self):
-        return f"{int((self.amount_of_days * 8) + self.wage.pay_per_hour)}$"
+        return f"{float((self.amount_of_days * 8) + self.wage.pay_per_hour)}$"
+
+    @property
+    def full_bonus(self):
+        return sum([bon["price_for_bonus"] for bon in self.report_card.person_bonus_project.bonus.all().values()])
+
+    @property
+    def full_bonus_detail(self):
+        return ", ".join([f"{bon['name']}:{bon['price_for_bonus']}$" for bon in self.report_card.person_bonus_project.bonus.all().values()])
 
     @property
     def total_salary(self):
-        return f"{float(self.report_card.person_bonus_project.bonus.price_for_bonus * (self.amount_of_days) + float(self.base_salary[:-1]))}$"
+        return f"{(self.full_bonus + float(self.base_salary[:-1]))}$"
 
     def get_absolute_url(self):
         return reverse("salary:main-detail", kwargs={"pk": self.pk})
