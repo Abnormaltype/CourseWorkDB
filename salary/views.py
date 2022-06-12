@@ -8,7 +8,6 @@ from .forms import (
     BonusSearchForm,
     WageSearchForm,
     ProjectSearchForm,
-    MainSearchForm,
     MainForm,
 )
 from .models import Project, Bonus, Main, Wage
