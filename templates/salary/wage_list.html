@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Wage list</h1>
+
+    <form action="">
+        <label>
+            <div class="input-group">
+                {{ search_form }}
+                <button class="button-search btn btn-success" type="submit">
+
+                    <i>Search</i>
+                </button>
+            </div>
+        </label>
+    </form>
+    <a style="float: right" class="button-create btn btn-primary" href="{% url 'salary:wage-create' %}">
+        Create wage
+    </a>
+    <br>
+    <br>
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Position</th>
+                <th>Role</th>
+                <th>Pay per hour</th>
+            </tr>
+
+            {% for wage in wage_list %}
+                <tr>
+                    <td>
+                        <a href="{{ wage.get_absolute_url }}">{{ wage.id }}</a>
+                    </td>
+                    <td>
+                        {{ wage.position }}
+                    </td>
+                    <td>
+                        {{ wage.role }}
+                    </td>
+                    <td>
+                        {{ wage.pay_per_hour }}$
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <strong>Information</strong>
+    <ul>
+        <li>Name of position: {{ wage.position }}</li>
+        <li>Name of role: {{ wage.role }}</li>
+        <li>Pay per hour: {{ wage.pay_per_hour }}$</li>
+
+    </ul>
+
+
+
+    <p><a  class="button-update btn btn-primary" href="{% url 'salary:wage-update' pk=wage.id %}">Update wage</a></p>
+    <p><a  class="button-delete btn btn-warning" href="{% url 'salary:wage-delete' pk=wage.id %}">Delete wage</a></p>
+{% endblock %}

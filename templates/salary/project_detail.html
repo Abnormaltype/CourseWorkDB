@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Information</h1>
+    <hr>
+    <ul>
+        <li><p>Project: {{ project.name }}</p></li>
+            <hr>
+        <li>Price: {{ project.price }}$</li>
+        <li>Start: {{ project.start }}</li>
+        <li>End: {{ project.end }}</li>
+
+    </ul>
+
+    <div class="ml-3">
+        <h4>Persons on the project</h4>
+
+        {% for person in project.personbonusproject_set.all %}
+            <hr>
+            <p><strong>Name:</strong> {{ person }}</p>
+
+        {% endfor %}
+    </div>
+
+
+    <p><a class="button-update btn btn-primary" href="{% url 'salary:project-update' pk=project.id %}">Update
+        project</a></p>
+    <p><a class="button-delete btn btn-warning" href="{% url 'salary:project-delete' pk=project.id %}">Delete
+        project</a></p>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Bonuses list</h1>
+
+    <form action="">
+        <label>
+            <div class="input-group">
+                {{ search_form }}
+                <button class="button-search btn btn-success" type="submit">
+
+                    <i>Search</i>
+                </button>
+            </div>
+        </label>
+    </form>
+    <a style="float: right" class="button-create btn btn-primary" href="{% url 'salary:bonus-create' %}">
+        Create Bonus
+    </a>
+    <br>
+    <br>
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price for bonus</th>
+            </tr>
+
+            {% for bonus in bonus_list %}
+                <tr>
+                    <td>
+                        <a href="{{ bonus.get_absolute_url }}">{{ bonus.id }}</a>
+                    </td>
+                    <td>
+                        {{ bonus.name }}
+                    </td>
+                    <td>
+                        {{ bonus.price_for_bonus }}$
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

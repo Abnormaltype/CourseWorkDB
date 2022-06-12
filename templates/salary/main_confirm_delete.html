@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Delete main</h1>
+
+    <p>Are you sure you want to delete the main {{ main }}?</p>
+
+    <form action="" method="post">
+    {% csrf_token %}
+        <input type="submit" value="Yes, delete" class="button-delete-confirm btn btn-danger">
+    </form>
+{% endblock %}

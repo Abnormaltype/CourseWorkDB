@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <strong>Information</strong>
+    <br>
+    <ul>
+        <li>Name of bonus: {{ bonus.name }}</li>
+        <li>Price for bonus: {{ bonus.price_for_bonus }}$</li>
+
+    </ul>
+
+
+
+    <p><a  class="button-update btn btn-primary" href="{% url 'salary:bonus-update' pk=bonus.id %}">Update bonus</a></p>
+    <p><a  class="button-delete btn btn-warning" href="{% url 'salary:bonus-delete' pk=bonus.id %}">Delete bonus</a></p>
+{% endblock %}

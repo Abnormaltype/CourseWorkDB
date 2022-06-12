@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Projects list</h1>
+
+    <form action="">
+        <label>
+            <div class="input-group">
+                {{ search_form }}
+                <button class="button-search btn btn-success" type="submit">
+
+                    <i>Search</i>
+                </button>
+            </div>
+        </label>
+    </form>
+    <a style="float: right" class="button-create btn btn-primary" href="{% url 'salary:project-create' %}">
+        Create Project
+    </a>
+    <br>
+    <br>
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Start</th>
+                <th>End</th>
+            </tr>
+
+            {% for project in project_list %}
+                <tr>
+                    <td>
+                        <a href="{{ project.get_absolute_url }}">{{ project.id }}</a>
+                    </td>
+                    <td>
+                        {{ project.name }}
+                    </td>
+                    <td>
+                        {{ project.price }}
+                    </td>
+                    <td>
+                        {{ project.start }}
+                    </td>
+                    <td>
+                        {{ project.end }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+{% endblock %}
