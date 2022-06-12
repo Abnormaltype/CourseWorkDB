@@ -7,13 +7,17 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('salary', '0004_alter_reportcard_end_alter_reportcard_start'),
+        ("salary", "0004_alter_reportcard_end_alter_reportcard_start"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='personbonusproject',
-            name='bonus',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='salary.bonus'),
+            model_name="personbonusproject",
+            name="bonus",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="salary.bonus",
+            ),
         ),
     ]

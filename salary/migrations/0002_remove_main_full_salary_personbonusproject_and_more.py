@@ -8,26 +8,54 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('salary', '0001_initial'),
+        ("salary", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='main',
-            name='full_salary',
+            model_name="main",
+            name="full_salary",
         ),
         migrations.CreateModel(
-            name='PersonBonusProject',
+            name="PersonBonusProject",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('bonus', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='salary.bonus')),
-                ('person', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='salary.project')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "bonus",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="salary.bonus"
+                    ),
+                ),
+                (
+                    "person",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "project",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="salary.project"
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='reportcard',
-            name='person_bonus_project',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='salary.personbonusproject'),
+            model_name="reportcard",
+            name="person_bonus_project",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="salary.personbonusproject",
+            ),
         ),
     ]

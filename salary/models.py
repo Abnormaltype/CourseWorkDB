@@ -29,7 +29,7 @@ class Project(models.Model):
         return f"{self.name} - {self.price}"
 
     def get_absolute_url(self):
-        return reverse("salary:project-detail", kwargs={'pk': self.pk})
+        return reverse("salary:project-detail", kwargs={"pk": self.pk})
 
 
 class Bonus(models.Model):
@@ -37,7 +37,7 @@ class Bonus(models.Model):
     price_for_bonus = models.FloatField()
 
     def get_absolute_url(self):
-        return reverse("salary:bonus-detail", kwargs={'pk': self.pk})
+        return reverse("salary:bonus-detail", kwargs={"pk": self.pk})
 
     def __str__(self):
         return f"+{self.price_for_bonus}$/day"
@@ -55,7 +55,9 @@ class PersonBonusProject(models.Model):
 class ReportCard(models.Model):
     start = models.DateTimeField()
     end = models.DateTimeField()
-    person_bonus_project = models.ForeignKey(to=PersonBonusProject, on_delete=models.CASCADE, null=True)
+    person_bonus_project = models.ForeignKey(
+        to=PersonBonusProject, on_delete=models.CASCADE, null=True
+    )
 
     def __str__(self):
         return f"{self.person_bonus_project.person} {self.person_bonus_project.project}"
@@ -70,7 +72,7 @@ class Wage(models.Model):
         return f"{self.position} {self.role}"
 
     def get_absolute_url(self):
-        return reverse("salary:wage-detail", kwargs={'pk': self.pk})
+        return reverse("salary:wage-detail", kwargs={"pk": self.pk})
 
 
 class Main(models.Model):
@@ -90,4 +92,4 @@ class Main(models.Model):
         return f"{float(self.report_card.person_bonus_project.bonus.price_for_bonus * (self.amount_of_days) + float(self.base_salary[:-1]))}$"
 
     def get_absolute_url(self):
-        return reverse("salary:main-detail", kwargs={'pk': self.pk})
+        return reverse("salary:main-detail", kwargs={"pk": self.pk})

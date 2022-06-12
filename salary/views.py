@@ -1,8 +1,16 @@
 from django.urls import reverse_lazy
 from django.views import generic
 
-from .forms import ProjectForm, WageForm, BonusForm, BonusSearchForm, WageSearchForm, ProjectSearchForm, MainSearchForm, \
-    MainForm
+from .forms import (
+    ProjectForm,
+    WageForm,
+    BonusForm,
+    BonusSearchForm,
+    WageSearchForm,
+    ProjectSearchForm,
+    MainSearchForm,
+    MainForm,
+)
 from .models import Project, Bonus, Main, Wage
 
 
@@ -47,9 +55,7 @@ class ProjectListView(generic.ListView):
 
         name = self.request.GET.get("name", "")
 
-        context["search_form"] = ProjectSearchForm(initial={
-            "name": name
-        })
+        context["search_form"] = ProjectSearchForm(initial={"name": name})
 
         return context
 
@@ -57,9 +63,7 @@ class ProjectListView(generic.ListView):
         form = ProjectSearchForm(self.request.GET)
 
         if form.is_valid():
-            return self.queryset.filter(
-                name__icontains=form.cleaned_data["name"]
-            )
+            return self.queryset.filter(name__icontains=form.cleaned_data["name"])
 
         return self.queryset
 
@@ -101,9 +105,7 @@ class WageListView(generic.ListView):
 
         position = self.request.GET.get("position", "")
 
-        context["search_form"] = WageSearchForm(initial={
-            "position": position
-        })
+        context["search_form"] = WageSearchForm(initial={"position": position})
 
         return context
 
@@ -155,9 +157,7 @@ class BonusListView(generic.ListView):
 
         name = self.request.GET.get("name", "")
 
-        context["search_form"] = BonusSearchForm(initial={
-            "name": name
-        })
+        context["search_form"] = BonusSearchForm(initial={"name": name})
 
         return context
 
@@ -165,9 +165,7 @@ class BonusListView(generic.ListView):
         form = BonusSearchForm(self.request.GET)
 
         if form.is_valid():
-            return self.queryset.filter(
-                name__icontains=form.cleaned_data["name"]
-            )
+            return self.queryset.filter(name__icontains=form.cleaned_data["name"])
 
         return self.queryset
 

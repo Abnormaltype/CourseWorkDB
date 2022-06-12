@@ -7,17 +7,22 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('salary', '0005_alter_personbonusproject_bonus'),
+        ("salary", "0005_alter_personbonusproject_bonus"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='person',
-            options={'verbose_name': 'persons', 'verbose_name_plural': 'persons'},
+            name="person",
+            options={"verbose_name": "persons", "verbose_name_plural": "persons"},
         ),
         migrations.AlterField(
-            model_name='personbonusproject',
-            name='bonus',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='salary.bonus'),
+            model_name="personbonusproject",
+            name="bonus",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="salary.bonus",
+            ),
         ),
     ]

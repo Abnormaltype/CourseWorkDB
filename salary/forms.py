@@ -35,7 +35,9 @@ class MainSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by FIO..", "class": "form-control"})
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by FIO..", "class": "form-control"}
+        ),
     )
 
 
@@ -44,7 +46,9 @@ class BonusSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by name..", "class": "form-control"})
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by name..", "class": "form-control"}
+        ),
     )
 
 
@@ -53,7 +57,9 @@ class WageSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by position..", "class": "form-control"})
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by position..", "class": "form-control"}
+        ),
     )
 
 
@@ -62,5 +68,7 @@ class ProjectSearchForm(forms.Form):
         max_length=255,
         required=False,
         label="",
-        widget=forms.TextInput(attrs={"placeholder": "Search by name..", "class": "form-control"})
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by name..", "class": "form-control"}
+        ),
     )

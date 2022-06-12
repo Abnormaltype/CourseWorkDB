@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('salary', '0003_alter_person_phone_number'),
+        ("salary", "0003_alter_person_phone_number"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='reportcard',
-            name='end',
+            model_name="reportcard",
+            name="end",
             field=models.DateTimeField(),
         ),
         migrations.AlterField(
-            model_name='reportcard',
-            name='start',
+            model_name="reportcard",
+            name="start",
             field=models.DateTimeField(),
         ),
     ]
